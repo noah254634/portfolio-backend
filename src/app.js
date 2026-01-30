@@ -18,15 +18,32 @@ import multer from "multer";
 
 const app = express();
 app.use(morgan("dev"));
+const allowedOrigins = [
+  'http://localhost:5173',                   // Local development
+  'https://admin-frontend-portfolio.vercel.app' // Your actual Vercel URL
+];
+
 app.use(cors({
-  origin: 'http://localhost:5173', // ✅ Must match your frontend URL exactly (no trailing slash)
-  credentials: true,               // ✅ Required because the frontend sends cookies
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// Handle preflight requests for all routes
+app.options('*', cors());
 app.use(express.json());
 app.use(cookieParser());
-/*app.use(arcjetProtectRoute);*/
+app.use(arcjetProtectRoute);
 
 app.use("/api/v1/profile",upload.fields([
     {name:"image",maxCount:1},
