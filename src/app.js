@@ -20,7 +20,8 @@ const app = express();
 app.use(morgan("dev"));
 const allowedOrigins = [
   'http://localhost:5173',                   // Local development
-  'https://admin-frontend-portfolio.vercel.app' // Your actual Vercel URL
+  'https://admin-frontend-portfolio-delta.vercel.app',
+  'https://admin-frontend-portfolio.vercel.app' 
 ];
 
 app.use(cors({
@@ -39,8 +40,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Handle preflight requests for all routes
-app.options('*', cors());
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(arcjetProtectRoute);
