@@ -32,7 +32,7 @@ app.use("/api/v1/profile",upload.fields([
     {name:"image",maxCount:1},
     {name:"resume",maxCount:1}
 ]), protectRoute, profileRoutes);
-app.use("/api/v1/heartbeat",protectRoute, heartRoutes);
+app.use("/api/v1/heartbeat", heartRoutes);
 app.use("/api/v1/projects", protectRoute, projectRoutes);
 app.use("/api/v1/timeline", protectRoute, timelineRoutes);
 app.use("/api/v1/skills", protectRoute, skillRoutes);

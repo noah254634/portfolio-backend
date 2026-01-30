@@ -17,3 +17,8 @@ pnpm-debug.log*
 .cache
 coverage
 .idea
+.vscode-test
+.vscode
+!.vscode/extensions.json
+.prettierrc
+.prettierrc.js
