@@ -9,6 +9,7 @@ import skillRoutes from "./routes/skills.js";
 import socialRoutes from "./routes/socialLinks.js";
 import authRoutes from "./routes/auth.js";
 import eduRoutes from "./routes/education.js";
+import publicRoutes from "./routes/public.js";
 import testimonialRoutes from "./routes/testimonial.js";
 import heartRoutes from "./routes/heart.js";
 import morgan from "morgan";
@@ -21,7 +22,8 @@ app.use(morgan("dev"));
 const allowedOrigins = [
   'http://localhost:5173',                   // Local development
   'https://admin-frontend-portfolio-delta.vercel.app',
-  'https://admin-frontend-portfolio.vercel.app' 
+  'https://admin-frontend-portfolio.vercel.app' ,
+  'https://noahs-personal-portfolio.vercel.app'
 ];
 
 app.use(cors({
@@ -43,7 +45,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(arcjetProtectRoute);
+/*app.use(arcjetProtectRoute);*/
 
 app.use("/api/v1/profile",upload.fields([
     {name:"image",maxCount:1},
@@ -57,6 +59,7 @@ app.use("/api/v1/social", protectRoute, socialRoutes);
 app.use("/api/v1/education", protectRoute, eduRoutes);
 app.use("/api/v1/testimonials", protectRoute, testimonialRoutes);
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/public", publicRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
