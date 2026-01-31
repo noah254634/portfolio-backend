@@ -6,7 +6,7 @@ import Project from "../models/Project.js";
 export const getPortfolioData=async(req,res)=>{
     try{
         const [profile,education,skills,testimonials,projects]=await Promise.all([
-            Profile.findOne({}),
+            Profile.find({}),
             Education.find({}).sort({duration:-1}),
             Skill.find({}),
             Testimonial.find({}),
