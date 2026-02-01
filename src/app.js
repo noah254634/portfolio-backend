@@ -19,8 +19,7 @@ import multer from "multer";
 
 const app = express();
 app.use(morgan("dev"));
-const allowedOrigins = [
-  'http://localhost:5173',                   // Local development
+const allowedOrigins = [              
   'https://admin-frontend-portfolio-delta.vercel.app',
   'https://admin-frontend-portfolio.vercel.app' ,
   'https://noahs-personal-portfolio.vercel.app'

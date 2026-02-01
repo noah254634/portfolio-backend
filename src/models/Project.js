@@ -28,7 +28,9 @@ const projectSchema = new mongoose.Schema(
     }, // Featured card
     status: {
       type: String,
-      enum: ['building', 'shipped', 'archived'],    },
+      enum: ['building', 'shipped', 'archived'], 
+      default: 'building',
+   },
   },
   { timestamps: true }
 );

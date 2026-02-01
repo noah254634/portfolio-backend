@@ -10,7 +10,7 @@ export const getPortfolioData=async(req,res)=>{
             Education.find({}).sort({duration:-1}),
             Skill.find({}),
             Testimonial.find({}),
-            Project.find({status:"building"}).sort({createdAt:1}),
+            Project.find({status:"building"}).sort({createdAt:-1}),
         ]);
         return res.status(200).json({
             profile,
