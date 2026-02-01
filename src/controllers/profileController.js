@@ -18,7 +18,7 @@ export const createProfile = async (req, res) => {
     const resume = req.files?.resume?.[0];
     const { name, bio, tagline } = req.body;
     
-    // Manually construct the links object from the request body
+
     const links = {
       github: req.body['links[github]'],
       linkedin: req.body['links[linkedin]'] ,
