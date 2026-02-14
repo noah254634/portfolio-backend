@@ -19,10 +19,12 @@ import multer from "multer";
 
 const app = express();
 app.use(morgan("dev"));
-const allowedOrigins = [              
+const allowedOrigins = [     
+  "http://localhost:5173",         
   'https://admin-frontend-portfolio-delta.vercel.app',
   'https://admin-frontend-portfolio.vercel.app' ,
-  'https://noahs-personal-portfolio.vercel.app'
+  'https://noahs-personal-portfolio.vercel.app',
+  'https://noahs-personal-portfolio.vercel.app/'
 ];
 
 app.use(cors({
